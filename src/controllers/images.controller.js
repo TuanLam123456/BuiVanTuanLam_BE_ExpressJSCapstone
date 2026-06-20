@@ -27,6 +27,16 @@ export const imagesController = {
     res.status(response.statusCode).json(response);
   },
 
+  // Find image info and creator details by Image Id
+  async findOne(req, res, next) {
+    const result = await imagesService.findOne(req);
+    const response = responseSuccess(
+      result,
+      `Get image #${req.params.id} with creator details successfully`,
+    );
+    res.status(response.statusCode).json(response);
+  },
+
   async update(req, res, next) {
     const result = await imagesService.update(req);
     const response = responseSuccess(

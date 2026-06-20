@@ -49,6 +49,29 @@ export const imagesService = {
     };
   },
 
+  async findOne(req) {
+    const { id } = req.params;
+    const result = await prisma.hinh_anh.findUnique({
+      where: {
+        hinh_id: Number(id),
+      },
+      include: {
+        nguoi_dung: {
+          select: {
+            nguoi_dung_id: true,
+            email: true,
+            ho_ten: true,
+            anh_dai_dien: true,
+          },
+        },
+      },
+    });
+    if (!result) {
+      throw new Error(`Image with id ${id} not found`);
+    }
+    return result;
+  },
+
   async update(req) {
     return `This action updates a id: ${req.params.id} images`;
   },
