@@ -28,4 +28,10 @@ export const authController = {
     );
     res.status(response.statusCode).json(response);
   },
+  // Get info
+  async getInfo(req, res, next) {
+    const result = await authService.getInfo(req);
+    const response = responseSuccess(result, "Get user info successfully");
+    res.status(response.statusCode).json(response);
+  },
 };

@@ -17,11 +17,11 @@ export const authCookie = async (req, res, next) => {
         email: decodedUser.email,
       },
     });
-    if (!decodedUser) {
+    if (!userExist) {
       throw new UnauthorizedError("Người dùng không tồn tại");
     }
 
-    req.user = user;
+    req.user = userExist;
 
     next();
   } catch (error) {

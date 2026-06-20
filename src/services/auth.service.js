@@ -85,4 +85,9 @@ export const authService = {
       refreshToken,
     };
   },
+
+  // Get User Info
+  async getInfo(req){
+    return req.user;
+  }
 };
