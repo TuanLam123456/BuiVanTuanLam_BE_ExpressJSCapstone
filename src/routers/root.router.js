@@ -4,6 +4,7 @@ import authRouter from "./auth.router.js";
 import imagesRouter from "./images.router.js";
 import commentsRouter from "./comments.router.js";
 import savedImagesRouter from "./saved-images.router.js";
+import usersRouter from "./users.router.js";
 
 
 const rootRouter = express.Router();
@@ -20,5 +21,7 @@ rootRouter.use("/images", imagesRouter);
 rootRouter.use("/comments", commentsRouter);
 // Saved Images
 rootRouter.use("/saved-images", savedImagesRouter);
+// Users
+rootRouter.use("/users", usersRouter);
 
 export default rootRouter;
