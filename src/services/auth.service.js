@@ -71,7 +71,7 @@ export const authService = {
     // Tạo access token
     // B1: tạo payload chứa thông tin: userId, email
     const payload = {
-      userId: existingUser.id,
+      userId: existingUser.nguoi_dung_id,
       email: existingUser.email,
     };
     // B2: tạo access token từ payload

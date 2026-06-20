@@ -37,21 +37,13 @@ export const imagesController = {
     res.status(response.statusCode).json(response);
   },
 
-  async update(req, res, next) {
-    const result = await imagesService.update(req);
-    const response = responseSuccess(
-      result,
-      `Update images #${req.params.id} successfully`,
-    );
-    res.status(response.statusCode).json(response);
-  },
-
-  async remove(req, res, next) {
-    const result = await imagesService.remove(req);
-    const response = responseSuccess(
-      result,
-      `Remove images #${req.params.id} successfully`,
-    );
-    res.status(response.statusCode).json(response);
-  },
+  // Created images list by users id
+  async getCreatedImagesByUserId(req, res, next) {
+    const result = await imagesService.getCreatedImagesByUserId(req);
+      const response = responseSuccess(
+        result,
+        `Get created images list for user successfully`
+      );
+      res.status(response.statusCode).json(response);
+  }
 };

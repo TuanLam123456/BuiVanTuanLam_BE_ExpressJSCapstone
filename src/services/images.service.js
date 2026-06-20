@@ -72,11 +72,23 @@ export const imagesService = {
     return result;
   },
 
-  async update(req) {
-    return `This action updates a id: ${req.params.id} images`;
-  },
+  async getCreatedImagesByUserId(req) {
+    const nguoiDungId = req.user?.nguoi_dung_id; // Lấy từ middleware authCookie
+    console.log('user id:',nguoiDungId)
+    if (!nguoiDungId) {
+      throw new Error("Unauthorized");
+    }
 
-  async remove(req) {
-    return `This action removes a id: ${req.params.id} images`;
+    // Tìm tất cả hình ảnh do user này đăng
+    const createdList = await prisma.hinh_anh.findMany({
+      where: {
+        nguoi_dung_id: Number(nguoiDungId),
+      },
+      orderBy: {
+        hinh_id: "desc", // Ảnh mới đăng lên đầu
+      },
+    });
+
+    return createdList;
   },
 };
