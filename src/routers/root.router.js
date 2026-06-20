@@ -3,6 +3,8 @@ import testRouter from "./test.router.js";
 import authRouter from "./auth.router.js";
 import imagesRouter from "./images.router.js";
 import commentsRouter from "./comments.router.js";
+import savedImagesRouter from "./saved-images.router.js";
+
 
 const rootRouter = express.Router();
 
@@ -16,5 +18,7 @@ rootRouter.use("/auth", authRouter);
 rootRouter.use("/images", imagesRouter);
 // Comments
 rootRouter.use("/comments", commentsRouter);
+// Saved Images
+rootRouter.use("/saved-images", savedImagesRouter);
 
 export default rootRouter;
