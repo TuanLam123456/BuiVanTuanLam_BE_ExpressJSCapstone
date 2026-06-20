@@ -15,4 +15,13 @@ export const savedImagesController = {
       next(error);
     }
   },
+  // Saved images list by User Id
+  async getSavedImagesByUserId(req, res, next) {
+    const result = await savedImagesService.getSavedImagesByUserId(req);
+    const response = responseSuccess(
+      result,
+      `Get saved images list for user successfully`,
+    );
+    res.status(response.statusCode).json(response);
+  },
 };

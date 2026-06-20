@@ -40,4 +40,31 @@ export const savedImagesService = {
       ngay_luu: formattedDate,
     };
   },
+  // Saved images list by User Id
+  async getSavedImagesByUserId(req) {
+    const nguoiDungId = req.user?.nguoi_dung_id;
+
+    if (!nguoiDungId) {
+      throw new Error("Unauthorized");
+    }
+
+    // Truy vấn danh sách ảnh đã lưu
+    const savedList = await prisma.luu_anh.findMany({
+      where: {
+        nguoi_dung_id: Number(nguoiDungId),
+      },
+      include: {
+        hinh_anh: true, // Lấy toàn bộ thông tin chi tiết của ảnh đã lưu
+      },
+      orderBy: {
+        ngay_luu: "desc", // Sắp xếp theo ngày lưu mới nhất
+      },
+    });
+
+    // Format lại dữ liệu trả về để cấu trúc gọn hơn (loại bỏ trường trung gian trùng lặp nếu cần)
+    return savedList.map((item) => ({
+      ngay_luu: item.ngay_luu,
+      ...item.hinh_anh,
+    }));
+  },
 };
