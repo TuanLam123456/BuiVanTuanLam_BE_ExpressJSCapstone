@@ -23,7 +23,10 @@ export const authController = {
     res.cookie("refreshToken", refreshToken, COOKIE_OPTIONS);
     res.cookie("accessToken", accessToken, COOKIE_OPTIONS);
     const response = responseSuccess(
-      { accessToken, refreshToken },
+      {
+        accessToken,
+        // refreshToken
+      },
       `Login successfully`,
     );
     res.status(response.statusCode).json(response);
