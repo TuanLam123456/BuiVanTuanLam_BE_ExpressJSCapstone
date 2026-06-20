@@ -3,7 +3,33 @@ import { prisma } from "../common/prisma/prisma.connect.js";
 
 export const imagesService = {
   async create(req) {
-    return `This action create`;
+    const nguoiDungId = req.user?.nguoi_dung_id; // Trích xuất từ authCookie
+    const file = req.file;
+    const { ten_hinh, mo_ta } = req.body;
+
+    if (!nguoiDungId) {
+      throw new Error("Unauthorized");
+    }
+
+    if (!file) {
+      throw new Error("Please upload an image file");
+    }
+
+    // Xây dựng đường dẫn URL để client truy cập trực tiếp
+    // Thư mục public đã được cấu hình static, nên đường dẫn sẽ bỏ chữ 'public' đi
+    const duongDanAnh = `http://localhost:3069/images/${file.filename}`;
+
+    // Lưu thông tin vào bảng hinh_anh trong cơ sở dữ liệu
+    const newImage = await prisma.hinh_anh.create({
+      data: {
+        ten_hinh: ten_hinh || file.originalname,
+        duong_dan: duongDanAnh,
+        mo_ta: mo_ta || "",
+        nguoi_dung_id: Number(nguoiDungId),
+      },
+    });
+
+    return newImage;
   },
 
   async findAll(req) {

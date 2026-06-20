@@ -10,6 +10,10 @@ app.use(express.json()); // middleware để parse body của request có địn
 
 app.use(logAPI);
 app.use(cookieParser()); // middle
+
+// middleware dùng để public thư mục, cho phép client truy cập trực tiếp vào thư mục để lấy ảnh
+app.use(express.static("public"));
+
 // định nghĩa api
 app.use("/api", rootRouter);
 

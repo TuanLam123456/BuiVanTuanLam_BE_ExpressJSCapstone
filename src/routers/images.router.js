@@ -1,11 +1,13 @@
 import express from "express";
 import { imagesController } from "../controllers/images.controller.js";
 import { authCookie } from "./../common/middleware/authCookie.middleware.js";
+import { uploadDiskStorage } from './../common/multer/disk-storage.multer.js';
 
 const imagesRouter = express.Router();
 
 // Tạo route CRUD
-imagesRouter.post("/", authCookie, imagesController.create);
+// Upload 1 file ảnh và lưu thông tin vào DB
+imagesRouter.post("/", authCookie, uploadDiskStorage.single("hinh_anh"), imagesController.create);
 
 // Find all images
 imagesRouter.get("/", authCookie, imagesController.findAll);

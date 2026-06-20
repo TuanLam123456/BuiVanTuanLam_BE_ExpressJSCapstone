@@ -3,9 +3,13 @@ import { imagesService } from "../services/images.service.js";
 
 export const imagesController = {
   async create(req, res, next) {
-    const result = await imagesService.create(req);
-    const response = responseSuccess(result, `Create images successfully`);
-    res.status(response.statusCode).json(response);
+    try {
+      const result = await imagesService.create(req);
+      const response = responseSuccess(result, `Upload image successfully`);
+      res.status(response.statusCode).json(response);
+    } catch (error) {
+      next(error);
+    }
   },
 
   // Find all images
