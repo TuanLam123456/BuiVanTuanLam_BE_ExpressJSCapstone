@@ -19,4 +19,7 @@ imagesRouter.get("/created-list", authCookie, imagesController.getCreatedImagesB
 // Find image info and creator details by Image Id
 imagesRouter.get("/:id",authCookie,imagesController.findOne)
 
+// Xóa ảnh theo ID (Chỉ chính chủ mới được xóa)
+imagesRouter.delete("/:id", authCookie, imagesController.remove);
+
 export default imagesRouter;

@@ -40,10 +40,23 @@ export const imagesController = {
   // Created images list by users id
   async getCreatedImagesByUserId(req, res, next) {
     const result = await imagesService.getCreatedImagesByUserId(req);
+    const response = responseSuccess(
+      result,
+      `Get created images list for user successfully`,
+    );
+    res.status(response.statusCode).json(response);
+  },
+
+  async remove(req, res, next) {
+    try {
+      const result = await imagesService.remove(req);
       const response = responseSuccess(
         result,
-        `Get created images list for user successfully`
+        `Remove image #${req.params.id} successfully`,
       );
       res.status(response.statusCode).json(response);
-  }
+    } catch (error) {
+      next(error);
+    }
+  },
 };

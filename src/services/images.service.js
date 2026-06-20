@@ -74,7 +74,7 @@ export const imagesService = {
 
   async getCreatedImagesByUserId(req) {
     const nguoiDungId = req.user?.nguoi_dung_id; // Lấy từ middleware authCookie
-    console.log('user id:',nguoiDungId)
+    console.log("user id:", nguoiDungId);
     if (!nguoiDungId) {
       throw new Error("Unauthorized");
     }
@@ -90,5 +90,39 @@ export const imagesService = {
     });
 
     return createdList;
+  },
+
+  async remove(req) {
+    const { id } = req.params;
+    const nguoiDungId = req.user?.nguoi_dung_id; // Lấy từ token đã đồng bộ
+
+    if (!nguoiDungId) {
+      throw new Error("Unauthorized");
+    }
+
+    // 1. Tìm ảnh để kiểm tra quyền sở hữu
+    const image = await prisma.hinh_anh.findUnique({
+      where: {
+        hinh_id: Number(id),
+      },
+    });
+
+    if (!image) {
+      throw new Error(`Image with id ${id} not found`);
+    }
+
+    // 2. Kiểm tra xem người dùng hiện tại có phải là người tạo ra bức ảnh này không
+    if (image.nguoi_dung_id !== Number(nguoiDungId)) {
+      throw new Error("You do not have permission to delete this image");
+    }
+
+    // 3. Tiến hành xóa ảnh
+    const deletedImage = await prisma.hinh_anh.delete({
+      where: {
+        hinh_id: Number(id),
+      },
+    });
+
+    return deletedImage;
   },
 };
