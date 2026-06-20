@@ -14,7 +14,7 @@ export const authCookie = async (req, res, next) => {
 
     const userExist = await prisma.nguoi_dung.findFirst({
       where: {
-        email: decodedUser.email,
+        nguoi_dung_id: decodedUser.nguoi_dung_id,
       },
     });
     if (!userExist) {
