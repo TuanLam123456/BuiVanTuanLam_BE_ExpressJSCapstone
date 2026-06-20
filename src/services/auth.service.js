@@ -6,7 +6,7 @@ export const authService = {
   // Register
   async register(req) {
     const { email, password, fullName } = req.body;
-    console.log({ email, password, fullName });
+    // console.log({ email, password, fullName });
     // kiểm tra email đã tồn tại chưa, nếu đã tồn tại thì trả về lỗi, nếu chưa tồn tại thì tạo mới user
     const existingUser = await prisma.nguoi_dung.findFirst({
       where: {
@@ -42,7 +42,7 @@ export const authService = {
   // Login
   async login(req) {
     const { email, password } = req.body;
-    console.log({ email, password });
+    // console.log({ email, password });
 
     // Kiểm tra email có tồn tại hay không
     // Nếu chưa tồn tại thì trả về lỗi, kêu người dùng đăng ký
