@@ -1,0 +1,46 @@
+{
+  "info": {
+    "_postman_id": "1e6964a9-f30f-4959-a9b9-62bfbe0922cd",
+    "name": "Saved Images",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32381291",
+    "_collection_link": "https://go.postman.co/collection/32381291-1e6964a9-f30f-4959-a9b9-62bfbe0922cd?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Check if image is saved by Image Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{Domain}}saved-images/check/3",
+          "host": [
+            "{{Domain}}saved-images"
+          ],
+          "path": [
+            "check",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Saved images list by User Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{Domain}}saved-images/list",
+          "host": [
+            "{{Domain}}saved-images"
+          ],
+          "path": [
+            "list"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

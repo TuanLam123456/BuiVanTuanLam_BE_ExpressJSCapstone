@@ -1,0 +1,52 @@
+{
+  "info": {
+    "_postman_id": "c58ba49d-af00-4814-9585-943a6644092c",
+    "name": "Comments",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32381291",
+    "_collection_link": "https://go.postman.co/collection/32381291-c58ba49d-af00-4814-9585-943a6644092c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get comments by Image Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{Domain}}comments/by-image/1",
+          "host": [
+            "{{Domain}}comments"
+          ],
+          "path": [
+            "by-image",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Comment on Image",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"hinh_id\": 1,\r\n  \"noi_dung\": \"Hình ảnh này đẹp quá!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{Domain}}comments",
+          "host": [
+            "{{Domain}}comments"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "info": {
+    "_postman_id": "5ea0fb6b-63a3-425e-9f30-6308ba1db59d",
+    "name": "Images",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32381291",
+    "_collection_link": "https://go.postman.co/collection/32381291-5ea0fb6b-63a3-425e-9f30-6308ba1db59d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Find all images",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{Domain}}images?page=1&pageSize=5",
+          "host": [
+            "{{Domain}}images"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "pageSize",
+              "value": "5",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Find images by name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{Domain}}images/images-by-name/?page=1&pageSize=5&filters={\"ten_hinh\":\"Thành\"}",
+          "host": [
+            "{{Domain}}images"
+          ],
+          "path": [
+            "images-by-name",
+            ""
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "pageSize",
+              "value": "5"
+            },
+            {
+              "key": "filters",
+              "value": "{\"ten_hinh\":\"Thành\"}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get images and creator details by image Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{Domain}}images/1",
+          "host": [
+            "{{Domain}}images"
+          ],
+          "path": [
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Created images list by User Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{Domain}}images/created-list",
+          "host": [
+            "{{Domain}}images"
+          ],
+          "path": [
+            "created-list"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Created images list by User Id Copy",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{Domain}}images/1",
+          "host": [
+            "{{Domain}}images"
+          ],
+          "path": [
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Upload Images",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "hinh_anh",
+              "type": "file",
+              "uuid": "99aa8fb7-a8f1-4aed-ad73-567d5bd06d16",
+              "src": "/C:/Users/dante/OneDrive/Pictures/PGR Wallpapers/0lh4t2cs5iogkak3vh-1766655448792英文.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{Domain}}images",
+          "host": [
+            "{{Domain}}images"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

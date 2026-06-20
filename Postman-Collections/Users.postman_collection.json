@@ -1,0 +1,48 @@
+{
+  "info": {
+    "_postman_id": "ebfd8554-3d5a-4e74-92a5-7c42e85229b9",
+    "name": "Users",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32381291",
+    "_collection_link": "https://go.postman.co/collection/32381291-ebfd8554-3d5a-4e74-92a5-7c42e85229b9?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Test Get",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "ho_ten",
+              "value": "Tuấn Lâm",
+              "type": "text",
+              "uuid": "bf685afd-37af-4c40-9cf2-231ef224a4ea"
+            },
+            {
+              "key": "tuoi",
+              "value": "26",
+              "type": "text",
+              "uuid": "15e9369b-cc06-4fe6-b210-cb797355f3e8"
+            },
+            {
+              "key": "anh_dai_dien",
+              "type": "file",
+              "uuid": "dbe9c6dd-9de5-4be9-a25b-c11af07c1324",
+              "src": "/C:/Users/dante/OneDrive/Pictures/PGR Wallpapers/0t1heojgwyhzi7mlrj-1752835271166不依-改绷带城市.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{Domain}}users",
+          "host": [
+            "{{Domain}}users"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
